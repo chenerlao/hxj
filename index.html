@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>有你·真好，Sicily·HXJ</title>
+<!-- <link rel="shortcut icon"type="image/x-icon"href="img/logo.ico" /> -->
+
+<style type="text/css">
+@font-face {
+	font-family: digit;
+	/*src: url('digital-7_mono.ttf') format("truetype");*/
+}
+</style>
+
+<link href="css/default.css" type="text/css" rel="stylesheet"/>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/garden.js"></script>
+<script type="text/javascript" src="js/functions.js"></script>
+<script type="text/javascript" src="js/pay.js"></script>
+<style>
+.bigImgBox{position:fixed;top:0;left:0;width:100%;background:black;z-index:1;height:100%;display:none;}
+.bigImg{width:96%;height:100%;position:fixed;top:50px;left:2%;z-index:10001;;text-align:center;z-index:2;display:none;}
+.bigImg div{width:100%;text-align:center;}
+.bigImg img{max-width:100%;height:auto;}
+.vertical-center{display: flex;justify-content:center;align-items:Center;}
+</style>
+<!--<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?bf4aa0c1ce1f508853a2988836576885";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>-->
+</head>
+
+<body>
+<audio autoplay="autoplay" loop="loop" id="autoPlayMuc">
+<!--此处应放入不同格式的文件以兼容各种浏览器-->
+	<source src="music/kanong.mp3" type="audio/mpeg">
+    Your browser does not support the audio tag.
+    </audio>
+<div class="pauseBtn rotate">&nbsp;</div>
+
+<div id="mainDiv">
+	<div id="content">
+		<div id="code">
+			<span class="comments">/**</span><br />
+			<span class="comments">*2018—6-9,我们相识</span><br />
+			<span class="comments">*2018—12-6</span><br />
+			<span class="comments">*Happy Birthday！</span><br />
+			<span class="comments">*/</span><br />
+				今夜，惊悉你的生日<br />
+				窗外的风带上我的祝福，<br />
+				芳草永绿，笑口常开。<br/>
+				祝亲爱的生活甜美，<br />永久快乐!<br/>
+				有你真好！<br/>
+		</div>
+		<div id="loveHeart">
+			<canvas id="garden"></canvas>
+			<div id="words">
+				<div id="messages">
+					岁月神偷，我们彼此认识的时光
+					<div id="elapseClock"></div>
+				</div>
+				<div id="loveu">
+					生日快乐！<br/>
+					<div class="signature">吖强</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="imgBox" style="text-align:center;">
+		<img src="img/1.jpg" style="width: 95%;height: auto;margin-top: 140px;text-align:center" alt="" />
+		<img src="img/2.jpg" style="width: 95%;height: auto;margin-top: 140px;text-align:center" alt="" />
+		<img src="img/3.jpg" style="width: 95%;height: auto;margin-top: 140px;text-align:center" alt="" />
+		<img src="img/4.jpg" style="width: 95%;height: auto;margin-top: 140px;text-align:center" alt="" />
+		<img src="img/5.jpg" style="width: 95%;height: auto;margin-top: 140px;text-align:center" alt="" />
+		<img src="img/6.jpg" style="width: 95%;height: auto;margin-top: 140px;text-align:center" alt="" />
+	</div>
+</div>
+
+<!-- 弹出层start -->
+<div class="bigImgBox"></div>
+<div class="bigImg">
+	<div class="vertical-center" style="width:100%;height:100%;">
+		<span><img src="img/xinji8.jpg"><span>
+	</div>
+</div>
+<!-- 弹出层end -->
+
+<script type="text/javascript">
+var offsetX = $("#loveHeart").width() / 2;
+var offsetY = $("#loveHeart").height() / 2 - 55;
+var together = new Date();
+together.setFullYear(2018, 6, 9);
+together.setHours(20);
+together.setMinutes(0);
+together.setSeconds(0);
+together.setMilliseconds(0);
+
+if (!document.createElement('canvas').getContext) {
+	var msg = document.createElement("div");
+	msg.id = "errorMsg";
+	msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+	document.body.appendChild(msg);
+	$("#code").css("display", "none")
+	$("#copyright").css("position", "absolute");
+	$("#copyright").css("bottom", "10px");
+	document.execCommand("stop");
+} else {
+	setTimeout(function () {
+		startHeartAnimation();
+	}, 5000);
+
+	timeElapse(together);
+	setInterval(function () {
+		timeElapse(together);
+	}, 500);
+
+	adjustCodePosition();
+	$("#code").typewriter();
+}
+
+
+var bigImg = $(".bigImg");
+var bigImgBox = $('.bigImgBox');
+
+$("#imgBox img").click(function(){
+	bigImg.show();
+	bigImgBox.show();
+	var src = $(this).attr('src');
+    $('.bigImg img').attr('src',src).css({
+        'margin':'auto',
+        'width':'100%'
+    });
+});
+
+bigImgBox.click(function(){
+	$(this).hide();
+	bigImg.hide();
+});
+bigImg.click(function(){
+	$(this).hide();
+	bigImgBox.hide();
+});
+</script>
+</body>
+</html>
